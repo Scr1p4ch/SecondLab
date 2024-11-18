@@ -2,21 +2,11 @@
 #define _SORT_MERGESORTER_H_
 
 #include "Sorter.h"
+#include "InsertionSort.h"
 #include "../Utility/Sequence.h"
 #include "../Utility/FirstLabUtility/Move.h"
 
-template <typename T>
-void InsertionSort(ArraySequence<T>* arr, int low, int high, int (*cmp)(T &, T &)) {
-    for (int i = low + 1; i <= high; ++i) {
-        T key = (*arr)[i];
-        int j = i - 1;
-        while (j >= low && (cmp((*arr)[j], key) > 0)) {
-            (*arr)[j + 1] = (*arr)[j];
-            --j;
-        }
-        (*arr)[j + 1] = key;
-    }
-}
+
 
 template <typename T>
 class MergeSorter : public Sorter<T> {

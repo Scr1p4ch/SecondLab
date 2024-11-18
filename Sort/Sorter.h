@@ -8,7 +8,7 @@ class Sorter {
 public:
     virtual ~Sorter() = default;
 
-    virtual ArraySequence<T>* Sort(ArraySequence<T>* arr, int (*cmp)(T & , T & )) = 0;
+    virtual ArraySequence<T>* Sort(ArraySequence<T>* arr, int (*cmp)(const T & , const T & )) = 0;
 };
 
 

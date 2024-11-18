@@ -2,28 +2,18 @@
 #define _SORT_QUICKSORTER_H_
 
 #include "Sorter.h"
+#include "InsertionSort.h"
 #include "../Utility/Sequence.h"
 #include "../Utility/FirstLabUtility/Move.h"
 
-template <typename T>
-void InsertionSort(ArraySequence<T>* arr, int low, int high, int (*cmp)(T &, T &)) {
-    for (int i = low + 1; i <= high; ++i) {
-        T key = (*arr)[i];
-        int j = i - 1;
-        while (j >= low && (cmp((*arr)[j], key) > 0)) {
-            (*arr)[j + 1] = (*arr)[j];
-            --j;
-        }
-        (*arr)[j + 1] = key;
-    }
-}
+
 
 template <typename T>
 class QuickSorter : public Sorter<T> {
 public:
     QuickSorter() = default;
 
-    ArraySequence<T>* Sort(ArraySequence<T>* arr, int (*cmp)(T &, T& )) override {
+    ArraySequence<T>* Sort(ArraySequence<T>* arr, int (*cmp)(const T &, const T& )) override {
         QuickSort(arr, 0,  arr->getSize() - 1, cmp);
         return arr;
     }
@@ -31,7 +21,7 @@ public:
     virtual ~QuickSorter() override = default;
 
 private:
-    void QuickSort(ArraySequence<T>* arr, int low, int high, int (*cmp)(T& , T& )) {
+    void QuickSort(ArraySequence<T>* arr, int low, int high, int (*cmp)(const T& , const T& )) {
         while (low < high) {
             if (high - low < 32) {
                 InsertionSort(arr, low, high, cmp);
@@ -50,7 +40,7 @@ private:
         }
     }
 
-    inline int Partition(ArraySequence<T>* arr, int low, int high, int (*cmp)(T &, T &)) {
+    inline int Partition(ArraySequence<T>* arr, int low, int high, int (*cmp)(const T &, const T &)) {
         T pivot = (*arr)[high];
         int i = low - 1;
 

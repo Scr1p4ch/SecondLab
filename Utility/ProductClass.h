@@ -57,7 +57,7 @@ public:
 
     std::string GetName() const { return name; }
     std::string GetCountry() const { return country; }
-    double GetSOldCopK() const { return soldCopK; }
+    double GetSoldCopK() const { return soldCopK; }
     unsigned int GetDuration() const { return duration; }
 };
 
