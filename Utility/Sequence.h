@@ -54,6 +54,11 @@ public:
         return arr[idx];
     }
 
+    /*const T& operator[](int idx) const {
+        return arr[idx];
+    }
+    */
+
     void append(const T & elem) {
         arr[arr.getCurrent() + 1] = elem;
     }
