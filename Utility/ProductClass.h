@@ -12,14 +12,15 @@ class Product {
     std::string country;
     std::string showHost;
     double soldCopK;
-    unsigned int duration; //in minutes;
+    unsigned int duration;
+    unsigned int sale; //in minutes;
 
 public: 
     Product() = default;
 
     Product(std::string _name, std::string _country, std::string _showHost, 
-    double _soldCopK, unsigned int _duration)
-     : name(_name), country(_country), showHost(_showHost), soldCopK(_soldCopK), duration(_duration) {}
+    double _soldCopK, unsigned int _duration, unsigned int _sale)
+     : name(_name), country(_country), showHost(_showHost), soldCopK(_soldCopK), duration(_duration), sale(_sale) {}
 
     
     Product(const Product & other) = default;
@@ -27,7 +28,7 @@ public:
 
 
     Product(Product && other) noexcept : name(Move(other.name)), country(Move(other.country)),
-        showHost(Move(other.showHost)), soldCopK(other.soldCopK), duration(other.duration) {}
+        showHost(Move(other.showHost)), soldCopK(other.soldCopK), duration(other.duration), sale(other.sale) {}
 
     Product & operator=(Product && other) noexcept {
         if (this != &other) {
@@ -36,6 +37,7 @@ public:
             showHost = Move(other.showHost);
             soldCopK = other.soldCopK;
             duration = other.duration;
+            sale = other.sale;
         }
 
         return *this;
@@ -43,7 +45,7 @@ public:
 
     void Serialize(std::ofstream & out) const {
         out << name << '\n' << country << '\n' << showHost << '\n'
-            << soldCopK << '\n' << duration << '\n';
+            << soldCopK << '\n' << duration << '\n' << sale << '\n';
         out << "===\n";
     }
 
@@ -51,7 +53,7 @@ public:
         std::getline(in, name);
         std::getline(in, country);
         std::getline(in, showHost);
-        in >> soldCopK >> duration;
+        in >> soldCopK >> duration >> sale;
         in.ignore();
     }
 
@@ -59,9 +61,10 @@ public:
     std::string GetCountry() const { return country; }
     double GetSoldCopK() const { return soldCopK; }
     unsigned int GetDuration() const { return duration; }
+    unsigned int GetSale() const { return sale; }
 };
 
-void SaveProductsToFile(ArraySequence<Product>& products, const std::string& filename) {
+void SaveProductsToFile(const std::string& filename, ArraySequence<Product>& products) {
     std::ofstream outFile(filename);
     if (!outFile) {
         throw std::ios_base::failure("Failed to open file for writing");
@@ -69,7 +72,6 @@ void SaveProductsToFile(ArraySequence<Product>& products, const std::string& fil
 
     for (int i = 0; i < products.getSize(); ++i) {
         products[i].Serialize(outFile);
-        outFile << "===" << '\n';
     }
 
     outFile.close();

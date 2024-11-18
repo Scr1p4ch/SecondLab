@@ -11,9 +11,9 @@ class DynamicArray {
     int current;
 
 public:
-    DynamicArray() : size(16), ptr(new T[size]), current(0) {}
+    DynamicArray() : size(16), ptr(new T[size]), current(-1) {}
 
-    DynamicArray(int _size) : size(_size), ptr(new T[size]), current(0) {}
+    DynamicArray(int _size) : size(_size), ptr(new T[size]), current(-1) {}
 
     DynamicArray(const DynamicArray & other) : size(other.size), ptr(new T[size]), current(other.current) {
         for (int i = 0; i < size; ++i) {

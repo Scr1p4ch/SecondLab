@@ -15,8 +15,8 @@ int IntCompareFunc(int & a, int & b) {
 }
 
 int SoldCopCompareFunc(const Product& a, const Product& b) {
-    int s1 = a.GetSoldCopK(), s2 = b.GetSoldCopK();
-    return IntCompareFunc(s1, s2);
+    double s1 = a.GetSoldCopK(), s2 = b.GetSoldCopK();
+    return (s1 < s2) ? -1 : (s1 > s2) ? 1 : 0;
 }
 
 #endif

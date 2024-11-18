@@ -62,9 +62,14 @@ public:
     void append(const T & elem) {
         arr[arr.getCurrent() + 1] = elem;
     }
+    
 
     T& get(const size_t idx) {
         return arr[idx];
+    }
+
+    int getCurrent() {
+        return arr.getCurrent();
     }
 
     void Swap(size_t idx_1, size_t idx_2) {
