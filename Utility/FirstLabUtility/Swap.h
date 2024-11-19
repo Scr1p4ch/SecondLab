@@ -5,9 +5,9 @@
 
 template<typename T>
 void MySwap(T & first, T & second) {
-    T tmp = Move(first);
-    first = Move(second);
-    second = Move(first);
+    T tmp = first;
+    first = second;
+    second = first;
 }
 
 #endif

@@ -13,7 +13,7 @@ class Product {
     std::string showHost;
     double soldCopK;
     unsigned int duration;
-    unsigned int sale; //in minutes;
+    unsigned int sale;
 
 public: 
     Product() = default;
