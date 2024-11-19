@@ -83,10 +83,6 @@ void ArraySequenceFuncTest() {
     assert(32 == a.getSize());
     assert(170 == a.getLast());
 
-    
-
-
-
 }
 
 
