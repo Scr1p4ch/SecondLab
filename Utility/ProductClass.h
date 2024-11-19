@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include "FirstLabUtility/Move.h"
+#include "Sequence.h"
 
 // тут продукты телемагазина, которые запускают на стрим бесконечной длительности
 
@@ -64,6 +65,12 @@ public:
     unsigned int GetSale() const { return sale; }
 };
 
+
+
+void SaveProductsToFile(const std::string& filename, ArraySequence<Product>& products);
+void LoadProductsFromFile(const std::string & filename, ArraySequence<Product>& products);
+
+/*
 void SaveProductsToFile(const std::string& filename, ArraySequence<Product>& products) {
     std::ofstream outFile(filename);
     if (!outFile) {
@@ -103,6 +110,7 @@ void LoadProductsFromFile(const std::string & filename, ArraySequence<Product>& 
     inFile.close();
 
 }
+*/
 
 /*void SwapProduct(Product & t1, Product & t2) {
     Product tmp = Move(t1);

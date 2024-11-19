@@ -7,6 +7,8 @@
 #include "Glossary.h"
 #include "ProductClass.h"
 
+
+
 void GenerateFileProduct(const std::string& filename,const int & cnt) {
     std::ofstream outFile(filename);
 
@@ -34,7 +36,6 @@ void GenerateFileProduct(const std::string& filename,const int & cnt) {
 
     outFile.close();
 }
-
 
 
 
