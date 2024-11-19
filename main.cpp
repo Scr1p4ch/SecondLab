@@ -10,7 +10,7 @@
 #include "Sort/QuickSorter.h"
 #include "Sort/Comparator.h"
 
-const unsigned int cnt = 5000;
+const unsigned int cnt = 20000;
 
 
 int main() {
