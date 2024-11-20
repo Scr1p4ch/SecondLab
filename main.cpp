@@ -15,8 +15,8 @@ const unsigned int cnt = 200;
 
 int main() {
 
-    const std::string filename = "random_products_1.txt";
-    const std::string filename_2 = "sorted_product.csv";
+    const std::string filename_2 = "random_products_1.txt";
+    const std::string filename = "sorted_product.csv";
 
     try {
 

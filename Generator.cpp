@@ -19,6 +19,10 @@ void GenerateFileProduct(const std::string& filename,const int & cnt, const File
     double soldCopK;
     unsigned int duration, sale;
 
+    if (format == FileFormat::CSV) {
+        outFile << "name,productCountry,productHost,soldCopK,duration,sale\n";
+    }
+
     for (int i = 0; i < cnt; ++i) {
         name = name_1[std::rand() % 10] + name_2[std::rand() % 10];
         productCountry = country[std::rand() % 5];
