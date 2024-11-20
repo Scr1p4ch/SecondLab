@@ -1,10 +1,7 @@
 #include "Utility/ProductClass.h"
 
 void Serialize(const Product& prod, std::ofstream & out, FileFormat format) {
-    if (format == FileFormat::CSV) {
-        out << "name,country,showHost,SoldCopK,dutarion,sale\n";
-    }
-        out << prod.name << ',' << prod.country << ',' << prod.showHost << ','
+    out << prod.name << ',' << prod.country << ',' << prod.showHost << ','
             << prod.soldCopK << ',' << prod.duration << ',' << prod.sale << '\n';
 }
 

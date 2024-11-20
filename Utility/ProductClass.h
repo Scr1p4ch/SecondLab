@@ -60,7 +60,7 @@ public:
 
 
 
-void SaveProductsToFile(const std::string& filename, ArraySequence<Product>& products, FileFormat format = FileFormat::TXT);
-void LoadProductsFromFile(const std::string & filename, ArraySequence<Product>& products, FileFormat format = FileFormat::TXT);
+void SaveProductsToFile(const std::string& filename, ArraySequence<Product>& products);
+void LoadProductsFromFile(const std::string & filename, ArraySequence<Product>& products);
 
 #endif

@@ -10,7 +10,7 @@
 #include "Sort/QuickSorter.h"
 #include "Sort/Comparator.h"
 
-const unsigned int cnt = 20000;
+const unsigned int cnt = 200;
 
 
 int main() {
@@ -25,9 +25,9 @@ int main() {
         QuickSorter<Product> sorter;
 
         LoadProductsFromFile(filename, a);
-        sorter.Sort(&a, SoldCopCompareFunc);
+        sorter.Sort(&a, DurationCompareFunc);
 
-        SaveProductsToFile(filename_2, a, FileFormat::CSV);
+        SaveProductsToFile(filename_2, a);
 
     } catch(...) {
         exit(1);
