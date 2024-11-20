@@ -10,13 +10,13 @@
 #include "Sort/QuickSorter.h"
 #include "Sort/Comparator.h"
 
-const unsigned int cnt = 200;
+const unsigned int cnt = 20;
 
 
 int main() {
 
-    const std::string filename_2 = "random_products_1.txt";
-    const std::string filename = "sorted_product.csv";
+    const std::string filename = "random_products_1.txt";
+    const std::string filename_2 = "sorted_product.csv";
 
     try {
 
@@ -25,8 +25,8 @@ int main() {
         QuickSorter<Product> sorter;
 
         LoadProductsFromFile(filename, a);
+       
         sorter.Sort(&a, DurationCompareFunc);
-
         SaveProductsToFile(filename_2, a);
 
     } catch(...) {

@@ -6,7 +6,7 @@
 enum class FileFormat;
 
 
-void GenerateFileProduct(const std::string& filename,const int & cnt, const FileFormat format) {
+void GenerateFileProduct(const std::string& filename,const int & cnt) {
     std::ofstream outFile(filename);
 
     if (!outFile) {
@@ -19,9 +19,21 @@ void GenerateFileProduct(const std::string& filename,const int & cnt, const File
     double soldCopK;
     unsigned int duration, sale;
 
-    if (format == FileFormat::CSV) {
-        outFile << "name,productCountry,productHost,soldCopK,duration,sale\n";
+    size_t idx = filename.find('.');
+    std::string form = filename.substr(idx + 1);
+
+    FileFormat format;
+
+    if ("txt" == form) {
+        format = FileFormat::TXT;
+    } 
+    else if ("csv" == form) {
+        format = FileFormat::CSV;
+        outFile << "name,country,showHost,SoldCopK,dutarion,sale\n";
+    } else {
+        throw std::invalid_argument("Invalid File Format");
     }
+
 
     for (int i = 0; i < cnt; ++i) {
         name = name_1[std::rand() % 10] + name_2[std::rand() % 10];

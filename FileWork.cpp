@@ -16,12 +16,9 @@ void SaveProductsToFile(const std::string& filename, ArraySequence<Product>& pro
     } 
     else if ("csv" == form) {
         format = FileFormat::CSV;
+        outFile << "name,country,showHost,SoldCopK,dutarion,sale\n";
     } else {
         throw std::invalid_argument("Invalid File Format");
-    }
-
-    if (format == FileFormat::CSV) {
-        outFile << "name,country,showHost,SoldCopK,dutarion,sale\n";
     }
     
     for (int i = 0; i < products.getSize(); ++i) {
@@ -51,10 +48,13 @@ void LoadProductsFromFile(const std::string & filename, ArraySequence<Product>& 
     } 
     else if ("csv" == form) {
         format = FileFormat::CSV;
+        inFile.ignore(100, '\n');
     } else {
         throw std::invalid_argument("Invalid File Format");
     }
+
     
+
     while (true) {
         Deserialize(tmp, inFile, format);
         
