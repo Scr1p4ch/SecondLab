@@ -3,8 +3,10 @@
 #include "Utility/ProductClass.h"
 #include "Utility/Glossary.h"
 
+enum class FileFormat;
 
-void GenerateFileProduct(const std::string& filename,const int & cnt) {
+
+void GenerateFileProduct(const std::string& filename,const int & cnt, const FileFormat format) {
     std::ofstream outFile(filename);
 
     if (!outFile) {
@@ -26,7 +28,7 @@ void GenerateFileProduct(const std::string& filename,const int & cnt) {
         sale = std::rand() % 20;
 
         Product a(name, productCountry, productHost, soldCopK, duration, sale);
-        Serialize(a, outFile);
+        Serialize(a, outFile, format);
     }
 
     outFile.close();

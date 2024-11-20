@@ -5,6 +5,7 @@
 #include <fstream>
 #include "FirstLabUtility/Move.h"
 #include "Sequence.h"
+#include "FileFormat.h"
 
 // тут продукты телемагазина, которые запускают на стрим бесконечной длительности
 
@@ -53,13 +54,13 @@ public:
     unsigned int GetSale() const { return sale; }
 
 
-    friend void Serialize(const Product& prod, std::ofstream & out);
-    friend void Deserialize(Product& prod, std::ifstream & in);
+    friend void Serialize(const Product& prod, std::ofstream & out, FileFormat format);
+    friend void Deserialize(Product& prod, std::ifstream & in, FileFormat format);
 };
 
 
 
-void SaveProductsToFile(const std::string& filename, ArraySequence<Product>& products);
-void LoadProductsFromFile(const std::string & filename, ArraySequence<Product>& products);
+void SaveProductsToFile(const std::string& filename, ArraySequence<Product>& products, FileFormat format = FileFormat::TXT);
+void LoadProductsFromFile(const std::string & filename, ArraySequence<Product>& products, FileFormat format = FileFormat::TXT);
 
 #endif

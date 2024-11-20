@@ -16,7 +16,7 @@ const unsigned int cnt = 20000;
 int main() {
 
     const std::string filename = "random_products_1.txt";
-    const std::string filename_2 = "sorted_product.txt";
+    const std::string filename_2 = "sorted_product.csv";
 
     try {
 
@@ -27,7 +27,7 @@ int main() {
         LoadProductsFromFile(filename, a);
         sorter.Sort(&a, SoldCopCompareFunc);
 
-        SaveProductsToFile(filename_2, a);
+        SaveProductsToFile(filename_2, a, FileFormat::CSV);
 
     } catch(...) {
         exit(1);
