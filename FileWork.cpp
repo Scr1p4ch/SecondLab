@@ -7,7 +7,7 @@ void SaveProductsToFile(const std::string& filename, ArraySequence<Product>& pro
     }
 
     for (int i = 0; i < products.getSize(); ++i) {
-        products[i].Serialize(outFile);
+        Serialize(products[i], outFile);
     }
 
     outFile.close();
@@ -24,7 +24,7 @@ void LoadProductsFromFile(const std::string & filename, ArraySequence<Product>& 
     std::string delimiter;
     
     while (true) {
-        tmp.Deserialize(inFile);
+        Deserialize(tmp, inFile);
         
         if (!inFile) break;
 

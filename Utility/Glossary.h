@@ -9,6 +9,4 @@ std::string country[] = {"China", "Russia", "India", "Indonesia", "Brazil"};
 std::string host[] = {"Artist", "Kitchener", "Airman", "Countryman", "Clerk", "Footballer"};
 
 
-
-
 #endif

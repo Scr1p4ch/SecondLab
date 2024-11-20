@@ -44,79 +44,22 @@ public:
         return *this;
     }
 
-    void Serialize(std::ofstream & out) const {
-        out << name << '\n' << country << '\n' << showHost << '\n'
-            << soldCopK << '\n' << duration << '\n' << sale << '\n';
-        out << "===\n";
-    }
-
-    void Deserialize(std::ifstream & in) {
-        std::getline(in, name);
-        std::getline(in, country);
-        std::getline(in, showHost);
-        in >> soldCopK >> duration >> sale;
-        in.ignore();
-    }
+    
 
     std::string GetName() const { return name; }
     std::string GetCountry() const { return country; }
     double GetSoldCopK() const { return soldCopK; }
     unsigned int GetDuration() const { return duration; }
     unsigned int GetSale() const { return sale; }
+
+
+    friend void Serialize(const Product& prod, std::ofstream & out);
+    friend void Deserialize(Product& prod, std::ifstream & in);
 };
 
 
 
 void SaveProductsToFile(const std::string& filename, ArraySequence<Product>& products);
 void LoadProductsFromFile(const std::string & filename, ArraySequence<Product>& products);
-
-/*
-void SaveProductsToFile(const std::string& filename, ArraySequence<Product>& products) {
-    std::ofstream outFile(filename);
-    if (!outFile) {
-        throw std::ios_base::failure("Failed to open file for writing");
-    }
-
-    for (int i = 0; i < products.getSize(); ++i) {
-        products[i].Serialize(outFile);
-    }
-
-    outFile.close();
-}
-
-void LoadProductsFromFile(const std::string & filename, ArraySequence<Product>& products) {
-    std::ifstream inFile(filename);
-
-    if (!inFile) {
-        throw std::ios_base::failure("Failed to open file for reading");
-    }
-
-    Product tmp;
-    std::string delimiter;
-    
-    while (true) {
-        tmp.Deserialize(inFile);
-        
-        if (!inFile) break;
-
-        std::getline(inFile, delimiter);
-        if (delimiter != "===" && !inFile.eof()) {
-            throw std::runtime_error("Invalid file format");
-        }
-
-        products.append(tmp);
-    }
-
-    inFile.close();
-
-}
-*/
-
-/*void SwapProduct(Product & t1, Product & t2) {
-    Product tmp = Move(t1);
-    t1 = Move(t2);
-    t2 = Move(tmp);
-}
-*/
 
 #endif
