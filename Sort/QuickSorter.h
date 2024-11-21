@@ -24,7 +24,7 @@ public:
 private:
     void QuickSort(ArraySequence<T>* arr, int low, int high, int (*cmp)(const T& , const T& )) {
         if (high - low <= 32) {
-            for (int i = low + 1; i <= high; ++i) { // тут потом глянуть, high - 1 или нет
+            for (int i = low + 1; i <= high; ++i) {
                 int j = i - 1;
                 while (j >= 0 && 1 == cmp((*arr)[j], (*arr)[j + 1])) {
                     std::swap((*arr)[j], (*arr)[j + 1]);

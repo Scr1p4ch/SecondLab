@@ -45,7 +45,6 @@ public:
         return *this;
     }
 
-    
 
     std::string GetName() const { return name; }
     std::string GetCountry() const { return country; }

@@ -3,7 +3,7 @@
 #include "Utility/ProductClass.h"
 #include "Utility/Glossary.h"
 
-enum class FileFormat;
+enum class FileFormat : short;
 
 
 void GenerateFileProduct(const std::string& filename,const int & cnt) {
