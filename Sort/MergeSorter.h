@@ -5,7 +5,7 @@
 #include "InsertionSort.h"
 #include "../Utility/Sequence.h"
 #include "../Utility/FirstLabUtility/Move.h"
-
+#include "../Utility/FirstLabUtility/Swap.h"
 
 
 template <typename T>

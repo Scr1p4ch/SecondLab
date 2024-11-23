@@ -6,7 +6,6 @@
 #include "../Utility/Sequence.h"
 #include "../Utility/FirstLabUtility/Move.h"
 #include "../Utility/FirstLabUtility/Swap.h"
-#include <iostream>
 
 
 template <typename T>
