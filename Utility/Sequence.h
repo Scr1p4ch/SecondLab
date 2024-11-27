@@ -54,6 +54,10 @@ public:
         return arr[idx];
     }
 
+    T operator[](int idx) const {
+        return arr[idx];
+    }
+
     /*const T& operator[](int idx) const {
         return arr[idx];
     }

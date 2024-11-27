@@ -64,7 +64,7 @@ void GenerateFileProduct(const std::string& filename,const int & cnt) {
         Product a(name, showHost, countryOfFactory, shopCountry, shopCity, emailOfShop,
             mainMarketplace, deliveryTimeDays, copLeft, soldCopK, durationOfStream, sale, daysOfSale,
                 rating, priceInDollars);
-        Serialize(a, outFile, format);
+        Serialize(a, outFile);
     }
 
     outFile.close();

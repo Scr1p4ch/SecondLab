@@ -1,6 +1,6 @@
 #include "Utility/ProductClass.h"
 
-void Serialize(const Product& prod, std::ofstream & out, FileFormat format) {
+void Serialize(const Product& prod, std::ofstream & out) {
     out << prod.name << ',' << prod.showHost << ',' << prod.countryOfFactory << ',' 
         << prod.shopCountry << ',' << prod.shopCity << ',' << prod.emailOfShop << ',' 
             << prod.mainMarketplace << ',' << prod.deliveryTimeDays << ',' << prod.copLeft << ','
@@ -9,7 +9,7 @@ void Serialize(const Product& prod, std::ofstream & out, FileFormat format) {
 
 }
 
-void Deserialize(Product& prod, std::ifstream & in, FileFormat format) {
+void Deserialize(Product& prod, std::ifstream & in) {
 
     std::getline(in, prod.name, ',');
     std::getline(in, prod.showHost, ',');
@@ -18,6 +18,8 @@ void Deserialize(Product& prod, std::ifstream & in, FileFormat format) {
     std::getline(in, prod.shopCity, ',');
     std::getline(in, prod.emailOfShop, ',');
     std::getline(in, prod.mainMarketplace, ',');
+
+
 
     in >> prod.deliveryTimeDays;
     in.ignore(1);

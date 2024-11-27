@@ -21,7 +21,7 @@ void QuickSortTest(unsigned int cnt) {
     QuickSorter<Product> sorter;
     LoadProductsFromFile(filename, a);
        
-    sorter.Sort(&a, DurationCompareFunc);
+    sorter.Sort(a, DurationCompareFunc);
         
     SaveProductsToFile(filename_2, a);
 }
@@ -35,7 +35,7 @@ void ShellSortTest(unsigned int cnt) {
     ShellSorterHib<Product> sorter;
     LoadProductsFromFile(filename, a);
        
-    sorter.Sort(&a, DurationCompareFunc);
+    sorter.Sort(a, DurationCompareFunc);
         
     SaveProductsToFile(filename_2, a);
 }
@@ -56,14 +56,17 @@ void SortersWorkTest() {
     LoadProductsFromFile(filename, a);
     LoadProductsFromFile(filename_2, b);
        
-    sorter_1.Sort(&a, DurationCompareFunc);
-    sorter_2.Sort(&b, DurationCompareFunc);
+    sorter_1.Sort(a, DurationCompareFunc);
+    sorter_2.Sort(b, DurationCompareFunc);
 
 
     for (int i = 0; i < 199; ++i) {
         assert(DurationCompareFunc(a[i], a[i + 1]) != 1);
         assert(DurationCompareFunc(b[i], b[i + 1]) != 1);
-    }    
+    }   
+
+    SaveProductsToFile("sorted" + filename, a);
+    SaveProductsToFile("sorted" + filename_2, b);
     
 }
 

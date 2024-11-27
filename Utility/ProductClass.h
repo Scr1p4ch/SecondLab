@@ -96,10 +96,27 @@ public:
     double GetRating() const { return rating; }
     double GetPriceInDollars() const { return priceInDollars; }
 
+    void SetName(const std::string & _name) { name = _name; }
+    void SetShowHost(const std::string & _showHost) { showHost = _showHost; }
+    void SetCountryOfFactory(const std::string & _factory) { countryOfFactory = _factory; }
+    void SetShopCounty(const std::string & _shopCountry) {shopCountry = _shopCountry; }
+    void SetShopCity(const std::string & _shopCity) { shopCity = _shopCity; }
+    void SetEmailfOfShop(const std::string & _emailOfShop) {emailOfShop = _emailOfShop; }
+    void SetMainMarketPlace(const std::string & _mainMarketplace) {mainMarketplace = _mainMarketplace; }
+    void SetDeliveryTimeDays(const unsigned int & days) {deliveryTimeDays = days; }
+    void SetCopLeft(const unsigned int & _copLeft) {copLeft = _copLeft; }
+    void SetSoldCopK(const double & _soldCopK) {soldCopK = _soldCopK; }
+    void SetDurationOfStream(const unsigned int & _durationOfStream) {durationOfStream = _durationOfStream; }
+    void SetSale(const unsigned int & _sale) {sale = _sale; }
+    void SetDaysOfSale(const unsigned int & _days) {daysOfSale = _days; }
+    void SetRating(const double & _rating) {rating = _rating; }
+    void SetPriceInDollars(const double & _price) {priceInDollars = _price; }
 
 
-    friend void Serialize(const Product& prod, std::ofstream & out, FileFormat format);
-    friend void Deserialize(Product& prod, std::ifstream & in, FileFormat format);
+
+
+    friend void Serialize(const Product& prod, std::ofstream & out);
+    friend void Deserialize(Product& prod, std::ifstream & in);
 };
 
 
