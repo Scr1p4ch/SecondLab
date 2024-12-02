@@ -1,6 +1,4 @@
 #include "Utility/ProductClass.h"
-#include <iostream>
-#include <sstream>
 
 void SaveProductsToFile(const std::string& filename, ArraySequence<Product>& products) {
     std::ofstream outFile(filename);
@@ -25,7 +23,6 @@ void SaveProductsToFile(const std::string& filename, ArraySequence<Product>& pro
     
     for (int i = 0; i < products.getSize(); ++i) {
         Serialize(products[i], outFile);
-        
     }
 
     outFile.close();
@@ -38,7 +35,7 @@ void LoadProductsFromFile(const std::string & filename, ArraySequence<Product>& 
         throw std::ios_base::failure("Failed to open file for reading");
     }
 
-    Product pr;
+    Product tmp;
     std::string delimiter;
 
     size_t idx = filename.find('.');
@@ -57,57 +54,12 @@ void LoadProductsFromFile(const std::string & filename, ArraySequence<Product>& 
     }
 
     
-    std::string line;
-    std::string tmp;
-    while (std::getline(inFile, line)) {
-        std::istringstream stream(line);
 
-        std::getline(stream, tmp, ',');
-        pr.SetName(tmp);
-
-        std::getline(stream, tmp, ',');
-        pr.SetShowHost(tmp);
-
-        std::getline(stream, tmp, ',');
-        pr.SetCountryOfFactory(tmp);
-
-        std::getline(stream, tmp, ',');
-        pr.SetShopCounty(tmp);
-
-        std::getline(stream, tmp, ',');
-        pr.SetShopCity(tmp);
-
-        std::getline(stream, tmp, ',');
-        pr.SetEmailfOfShop(tmp);
-
-        std::getline(stream, tmp, ',');
-        pr.SetMainMarketPlace(tmp);
-
-        std::getline(stream, tmp, ',');
-        pr.SetDeliveryTimeDays(std::stoi(tmp));
-
-        std::getline(stream, tmp, ',');
-        pr.SetCopLeft(std::stoi(tmp));
-
-        std::getline(stream, tmp, ',');
-        pr.SetSoldCopK(std::stod(tmp));
+    while (true) {
+        Deserialize(tmp, inFile);
         
-        std::getline(stream, tmp, ',');
-        pr.SetDurationOfStream(std::stoi(tmp));
-
-        std::getline(stream, tmp, ',');
-        pr.SetSale(std::stoi(tmp));
-
-        std::getline(stream, tmp, ',');
-        pr.SetDaysOfSale(std::stoi(tmp));
-
-        std::getline(stream, tmp, ',');
-        pr.SetRating(std::stod(tmp));
-
-        std::getline(stream, tmp);
-        pr.SetPriceInDollars(std::stod(tmp));
-
-        products.append(pr);
+        if (!inFile) break;
+        products.append(tmp);
     }
 
     inFile.close();
