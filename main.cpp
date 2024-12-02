@@ -207,8 +207,42 @@ QWidget* createSecondWindow(QStackedWidget* stackedWidget) {
         } 
         else if (compareFunc == "По имени ведущего (алф)") {
             cmp = ShowHostCompareFunc;
-        } else {
+        } 
+        else if (compareFunc == "Страна производитель (алф)") {
+            cmp = ShopCountryCompareFunc;
+        }
+        else if (compareFunc == "Город производства (алф)") {
+            cmp = ShopCityCompareFunc;
+        }
+        else if (compareFunc == "email магазина (алф)") {
+            cmp = EmailOfShopCompareFunc;
+        }
+        else if (compareFunc == "Основная торговая площадка (алф)") {
+            cmp = MainMarketplaceCompareFunc;
+        }
+        else if (compareFunc == "Время доставки (возр)") {
             cmp = DeliveryTimeCompareFunc;
+        }
+        else if (compareFunc == "Оставшиеся копии (возр)") {
+            cmp = CopLeftCompareFunc;
+        }
+        else if (compareFunc == "Проданные копии (возр)") {
+            cmp = SoldCopKCompareFunc;
+        }
+        else if (compareFunc == "Длительность трансляции (возр)") {
+            cmp = DurationCompareFunc;
+        }
+        else if (compareFunc == "Скидка (возр)") {
+            cmp = SaleCompareFunc;
+        }
+        else if (compareFunc == "Длительность скидки (возр)") {
+            cmp = DaysOfSaleCompareFunc;
+        }
+        else if (compareFunc == "Рейтинг продукта (возр)") {
+            cmp = ProductRatingCompareFunc;
+        }
+        else {
+            cmp = ProductPriceCompareFunc;
         }
 
         ArraySequence<Product> arr;

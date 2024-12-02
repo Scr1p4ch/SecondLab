@@ -24,9 +24,9 @@ void SaveProductsToFile(const std::string& filename, ArraySequence<Product>& pro
     }
     
     for (int i = 0; i < products.getSize(); ++i) {
-        if (products[i].GetName() != "")
-        Serialize(products[i], outFile);
-        
+        if (products[i].GetName() != "") {
+            Serialize(products[i], outFile);
+        }
     }
 
     outFile.close();
