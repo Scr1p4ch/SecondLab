@@ -36,13 +36,13 @@ class Product {
 
 
 public: 
-    Product() = default;
+    //Product() = default;
 
-    Product(std::string _name, std::string _showHost, std::string _countryOfFactory,
-        std::string _shopCountry, std::string _shopCity, std::string _emailOfShop,
-            std::string _mainMarketPlace, unsigned int _deliveryTimeDays,
-                unsigned int _copLeft, double _soldCopK, unsigned int _durationOfStream, unsigned int _sale,
-                    unsigned int _daysOfSale, double _rating, double _priceInDollars) : 
+    Product(std::string _name = "", std::string _showHost = "", std::string _countryOfFactory = "",
+        std::string _shopCountry = "", std::string _shopCity = "", std::string _emailOfShop = "",
+            std::string _mainMarketPlace = "", unsigned int _deliveryTimeDays = 0u,
+                unsigned int _copLeft = 0u, double _soldCopK = 0, unsigned int _durationOfStream = 0u, unsigned int _sale = 0u,
+                    unsigned int _daysOfSale = 0u, double _rating = 0, double _priceInDollars = 0) : 
         name(_name), showHost(_showHost), countryOfFactory(_countryOfFactory), shopCountry(_shopCountry), shopCity(_shopCity), 
             emailOfShop(_emailOfShop), mainMarketplace(_mainMarketPlace), deliveryTimeDays(_deliveryTimeDays), copLeft(_copLeft), 
                 soldCopK(_soldCopK), durationOfStream(_durationOfStream), sale(_sale), daysOfSale(_daysOfSale), rating(_rating), priceInDollars(_priceInDollars) {}
