@@ -23,13 +23,13 @@ void GenerateFileProduct(const std::string& filename,const int & cnt) {
     size_t idx = filename.find('.');
     std::string form = filename.substr(idx + 1);
 
-    FileFormat format;
+    //FileFormat format;
 
     if ("txt" == form) {
-        format = FileFormat::TXT;
+        //format = FileFormat::TXT;
     } 
     else if ("csv" == form) {
-        format = FileFormat::CSV;
+        //format = FileFormat::CSV;
         outFile << "name,shopHost,countryOfFactory,shopCountry,shopCity,emailOfShop,mainMarketplace,deliveryTimeDays," << 
         "copLeft,soldCopK,durationOfStream,sale,daysOfSale,rating,priceInDollars\n";
     } else {

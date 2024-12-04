@@ -11,13 +11,13 @@ void SaveProductsToFile(const std::string& filename, ArraySequence<Product>& pro
     size_t idx = filename.find('.');
     std::string form = filename.substr(idx + 1);
 
-    FileFormat format;
+    //FileFormat format;
 
     if ("txt" == form) {
-        format = FileFormat::TXT;
+        //format = FileFormat::TXT;
     } 
     else if ("csv" == form) {
-        format = FileFormat::CSV;
+        //format = FileFormat::CSV;
         outFile << "name,shopHost,countryOfFactory,shopCountry,shopCity,emailOfShop,mainMarketplace,deliveryTimeDays,copLeft,soldCopK,durationOfStream,sale,daysOfSale,rating,priceInDollars\n";
     } else {
         throw std::invalid_argument("Invalid File Format");
@@ -45,13 +45,13 @@ void LoadProductsFromFile(const std::string & filename, ArraySequence<Product>& 
     size_t idx = filename.find('.');
     std::string form = filename.substr(idx + 1);
 
-    FileFormat format;
+    //FileFormat format;
 
     if ("txt" == form) {
-        format = FileFormat::TXT;
+        //format = FileFormat::TXT;
     } 
     else if ("csv" == form) {
-        format = FileFormat::CSV;
+        //format = FileFormat::CSV;
         inFile.ignore(300, '\n');
     } else {
         throw std::invalid_argument("Invalid File Format");

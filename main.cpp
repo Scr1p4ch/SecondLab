@@ -32,37 +32,6 @@
 #include <QComboBox>
 
 
-/*
-#include <qapplication.h>
-//#include <qapplicationstatic.h>
-#include <qwidget.h>
-#include <qpushbutton.h>
-#include <QVBoxLayout>
-#include <qmessagebox.h>
-#include <qstackedwidget.h>
-#include <qmainwindow.h>
-#include <qlabel.h>
-#include <qfiledialog.h>
-#include <qlineedit.h>
-*/
-
-/*
-#include <iostream>
-#include <chrono>
-#include <QApplication>
-#include <QWidget>
-#include <QPushButton>
-#include <QVBoxLayout>
-#include <QMessageBox>
-#include <QStackedWidget>
-#include <QMainWindow>
-#include <QLabel>
-#include <QFileDialog>
-#include <QLineEdit>
-*/
-
-
-
 QString filePath;
 
 
@@ -143,6 +112,7 @@ QWidget* createFirstWindow(QStackedWidget* stackedWidget) {
 
 
 QWidget* createSecondWindow(QStackedWidget* stackedWidget) {
+
     QWidget* widget = new QWidget;
     widget->setMinimumWidth(450);
     widget->setMinimumHeight(300);
@@ -188,7 +158,7 @@ QWidget* createSecondWindow(QStackedWidget* stackedWidget) {
     layout->addWidget(returnBtn);
 
     QObject::connect(btn1, &QPushButton::clicked, [=]() {
-        if (filePath.isEmpty() || filePath == "") {
+        if (filePath.isEmpty() || filePath == "" || fileLabel->text() == "Файл не выбран") {
             QMessageBox::warning(widget, "Ошибка", "Неверный файл!");
             return;
         }
@@ -269,53 +239,8 @@ QWidget* createSecondWindow(QStackedWidget* stackedWidget) {
 }
 
 
-/*
-QWidget* createSecondWindow(QStackedWidget* stackedWidget) {
-    QWidget* widget = new QWidget;
-    widget->setMinimumWidth(450);
-    widget->setMinimumHeight(300);
-
-    auto* layout = new QVBoxLayout(widget);
-    auto* label = new QLabel("Генерация файлов", widget);
-    label->setAlignment(Qt::AlignHCenter);
-
-    auto* fileLabel = new QLabel("Файл не выбран", widget);
-    fileLabel->setStyleSheet("color: green; font-size: 14px;");
-    fileLabel->setWordWrap(true);
-
-    auto* btn1 = new QPushButton("Сортировка", widget);
-    auto* returnBtn = new QPushButton("Назад", widget);
-    auto* fileBtn = new QPushButton("Выбрать файл", widget);
-
-
-    layout->addWidget(label);
-    layout->addWidget(fileLabel);
-    layout->addWidget(fileBtn);
-    layout->addWidget(btn1);
-    layout->addWidget(returnBtn);
-
-    QObject::connect(btn1, &QPushButton::clicked, [=]() {
-        if (filePath.isEmpty() || filePath == "") {
-            QMessageBox::warning(widget, "Ошибка", "Неверный файл!");
-            return;
-        }
-
-        QMessageBox::information(widget, "Генератор", "Файл отсортирован!");
-
-    });
-
-    QObject::connect(returnBtn, &QPushButton::clicked, [=]() { stackedWidget->setCurrentIndex(0); });
-
-    QObject::connect(fileBtn, &QPushButton::clicked, [=]() {
-        filePath = QFileDialog::getOpenFileName(widget, "Выбор файла");
-        fileLabel->setText(filePath.isEmpty() ? "Файл не выбран" : filePath);
-    });
-
-    return widget;
-}
-*/
-
 QWidget* createThirdWindow(QStackedWidget* stackedWidget) {
+
     QWidget* widget = new QWidget;
     widget->setMinimumWidth(450);
     widget->setMinimumHeight(300);
@@ -349,6 +274,11 @@ QWidget* createThirdWindow(QStackedWidget* stackedWidget) {
         bool ok;
         int number = numberInput->text().toInt(&ok);
 
+        if (filePath.isEmpty() || filePath == "") {
+            QMessageBox::warning(widget, "Ошибка", "Неверный файл!");
+            return;
+        }
+
         if (!ok || number <= 0) {
             QMessageBox::warning(widget, "Ошибка", "Введите положительное число!");
             return;
@@ -359,10 +289,6 @@ QWidget* createThirdWindow(QStackedWidget* stackedWidget) {
             return;
         }
 
-        if (filePath.isEmpty() || filePath == "") {
-            QMessageBox::warning(widget, "Ошибка", "Неверный файл!");
-            return;
-        }
 
         GenerateFileProduct(filePath.toStdString(), number);
         QMessageBox::information(widget, "Генератор", "Файл создан!");

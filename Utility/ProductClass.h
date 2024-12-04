@@ -7,7 +7,6 @@
 #include "Sequence.h"
 #include "FileFormat.h"
 
-// тут продукты телемагазина, которые запускают на стрим произвольной длительности
 
 class Product {
     std::string name;
